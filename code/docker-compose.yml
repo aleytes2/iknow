@@ -1,0 +1,40 @@
+version: '3'
+#networks:
+#    corp:
+#      driver: bridge
+
+services: 
+    api01:
+        restart: always
+        build:
+            context: .
+            dockerfile: Dockerfile
+        image: iknow:latest
+        container_name: iknow
+        #ports:
+        #    - "5000:80"
+        #environment: 
+        #    - CHOKIDAR_USEPOLLING=true # may need to enable in Windows
+        #volumes:
+        #    - /app/node-modules
+        #    - .:/app
+    web:
+        container_name: nginx
+        image: nginx:latest
+        #networks:
+        #    - corp
+        build:
+            context: .
+            dockerfile: Dockerfile-nginx
+        ports:
+            - '8080:8080'
+        depends_on:
+            - 'api01'
+    # tests:
+    #     build:
+    #         context: .
+    #         dockerfile: Dockerfile
+    #     #volumes:
+    #     #    - /app/node-modules
+    #     #    - .:/app
+    #     command: ["npm", "run", "test"]
