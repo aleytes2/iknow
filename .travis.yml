@@ -6,7 +6,7 @@ services:
 before_install:
     # - docker build -f Dockerfile.dev .
     # note: you may wan to use -e CI=true option for docker run
-    - docker build -t iknow .
+    - docker build -t iknow ./docker
 
 # TODO: need a command to run unit tests
 # script:
