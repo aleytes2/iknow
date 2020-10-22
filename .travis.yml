@@ -1,12 +1,13 @@
-# language: generic
+language: generic
 sudo: required
+
 services:
     - docker
 
 before_install:
     # - docker build -f Dockerfile.dev .
     # note: you may wan to use -e CI=true option for docker run
-    - docker build -t iknow .
+    - docker build -t iknow -f docker/Dockerfile code
 
 # TODO: need a command to run unit tests
 # script:

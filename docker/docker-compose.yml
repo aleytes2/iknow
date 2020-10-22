@@ -7,8 +7,8 @@ services:
     api01:
         restart: always
         build:
-            context: .
-            dockerfile: Dockerfile
+            context: ../code
+            dockerfile: ../docker/Dockerfile
         image: iknow:latest
         container_name: iknow
         #ports:
