@@ -12,3 +12,19 @@ before_install:
 # TODO: need a command to run unit tests
 # script:
 #    - docker run iknow <command>
+
+deploy:
+    provider: elasticbeanstalk
+    region: "us-east-2"
+    app: "Test 1"
+    env: "Test1-env"
+    bucket_name: "elasticbeanstalk-us-east-2-427426714196"
+    bucket_path: "Test 1"
+    on: 
+        branch: master
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
+
+# AWS NOTES
+# - select Docker running on 64bit Amazon Linux, not Linux 2
+# - Elastic Beanstalk supports Docker Compose, it will first look for docker-compose.yml
